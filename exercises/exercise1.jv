@@ -15,7 +15,7 @@ pipeline Airports_Data_Pipeline{
         delimiter: ";";
     }
     block AirportsTableInterpreter oftype TableInterpreter{
-        header: false;
+        header: true;
         columns:[
             "column_1" oftype integer,
             "column_2" oftype text,
