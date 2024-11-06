@@ -1,35 +1,31 @@
 # Project Plan
 
 ## Title
-<!-- Give your project a short title. -->
-Income Inequality and Crime Rate by State: Correlation Analysis
+Unemployment Rate and GDP Growth Correlation in the United States
 
 ## Main Question
 
-<!-- Think about one main question you want to answer based on the data. -->
-1. Is there a correlation between income inequality and crime rates across U.S. states, and if so, does this correlation vary by type of crime?
+1. Is there a significant relationship between the annual unemployment rate and GDP growth in the United States over time?
 
 ## Description
 
-<!-- Describe your data science project in max. 200 words. Consider writing about why and how you attempt it. -->
-This project explores the relationship between income inequality and crime rates in the United States. Income inequality, often measured using the Gini Index, is a critical indicator of socio-economic disparity, and its potential impact on crime rates is a relevant topic for policymakers and researchers alike. By analyzing state-level data on both income inequality and crime rates, this project aims to identify possible trends or correlations. Findings from this project may provide insights into whether states with higher levels of income disparity also experience higher crime rates and could inform policies to address socio-economic challenges.
+Understanding the link between unemployment and economic growth can reveal key insights into the U.S. economy. This project explores the relationship between annual unemployment rates and real GDP growth from 1960 to 2023, aiming to spot patterns over time. By examining how these two indicators move together or diverge, we can gain a clearer view of their impact on each other and potentially inform economic policies and forecasts. This analysis will use annual data to track how changes in employment and economic output have aligned or differed across various economic periods.
 
 ## Datasources
 
-<!-- Describe each datasources you plan to use in a section. Use the prefix "DatasourceX" where X is the id of the datasource. -->
+### Datasource1: Unemployment Rate (U.S.)
+* **Metadata URL**: [U.S. Bureau of Labor Statistics - Unemployment Rate](https://fred.stlouisfed.org/series/UNRATE#0)
+* **Data URL**: [Unemployment Rate Data](https://fred.stlouisfed.org/graph/fredgraph.csv?bgcolor=%23e1e9f0&chart_type=line&drp=0&fo=open%20sans&graph_bgcolor=%23ffffff&height=450&mode=fred&recession_bars=on&txtcolor=%23444444&ts=12&tts=12&width=1320&nt=0&thu=0&trc=0&show_legend=yes&show_axis_titles=yes&show_tooltip=yes&id=UNRATE&scale=left&cosd=1960-01-01&coed=2023-01-01&line_color=%234572a7&link_values=false&line_style=solid&mark_type=none&mw=3&lw=3&ost=-99999&oet=99999&mma=0&fml=a&fq=Annual&fam=avg&fgst=lin&fgsnd=2020-02-01&line_index=1&transformation=lin&vintage_date=2024-11-06&revision_date=2024-11-06&nd=1948-01-01)
+* **Data Type**: CSV
 
-### Datasource1: Income Inequality (Gini Index)
-* Metadata URL: 
-* Data URL:
-* Data Type: CSV
+This dataset shows the seasonally adjusted annual average U.S. unemployment rate from 1960 to 2023, making it easy to compare trends from year to year.
 
+### Datasource2: Real Gross Domestic Product (Real GDP)
+* **Metadata URL**: [U.S. Bureau of Economic Analysis - Real GDP](https://fred.stlouisfed.org/series/GDPC1#0)
+* **Data URL**: [Real GDP Data](https://fred.stlouisfed.org/graph/fredgraph.csv?bgcolor=%23e1e9f0&chart_type=line&drp=0&fo=open%20sans&graph_bgcolor=%23ffffff&height=450&mode=fred&recession_bars=on&txtcolor=%23444444&ts=12&tts=12&width=1320&nt=0&thu=0&trc=0&show_legend=yes&show_axis_titles=yes&show_tooltip=yes&id=GDPC1&scale=left&cosd=1960-01-01&coed=2023-01-01&line_color=%234572a7&link_values=false&line_style=solid&mark_type=none&mw=3&lw=2&ost=-99999&oet=99999&mma=0&fml=a&fq=Annual&fam=sum&fgst=lin&fgsnd=2020-02-01&line_index=1&transformation=lin&vintage_date=2024-11-06&revision_date=2024-11-06&nd=1947-01-01)
+* **Data Type**: CSV
 
-
-### Datasource2: Crime Rates by State
-* Metadata URL: 
-* Data URL: 
-* Data Type: CSV
-
+This dataset provides the total annual Real GDP for the U.S. from 1960 to 2023, adjusted for inflation. It gives a clear picture of the country’s economic output and will help track economic growth over time, while also looking at how it relates to unemployment trends.
 
 ## Work Packages
 
