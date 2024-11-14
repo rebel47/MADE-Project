@@ -9,23 +9,35 @@ Unemployment Rate and GDP Growth Correlation in the United States
 
 ## Description
 
-Understanding the link between unemployment and economic growth can reveal key insights into the U.S. economy. This project explores the relationship between annual unemployment rates and real GDP growth from 1960 to 2023, aiming to spot patterns over time. By examining how these two indicators move together or diverge, we can gain a clearer view of their impact on each other and potentially inform economic policies and forecasts. This analysis will use annual data to track how changes in employment and economic output have aligned or differed across various economic periods.
+Understanding the link between unemployment rate and economic growth which can reveal key insights into the U.S. economy. In this project I'll explores the relationship between unemployment rates and real GDP growth over both long-term and recent periods. By analyzing annual data from 1960 to 2023 and quarterly data from the last 10 years, we aim to identify patterns, cycles, and short-term variations. Examining how these indicators move together or diverge can provide a clearer understanding of their impact on each other and potentially inform economic policies and forecasts. This dual-level analysis will help us see how changes in employment and economic output align or differ during various economic cycles.
+
 
 ## Datasources
 
-### Datasource1: Unemployment Rate (U.S.)
-* **Metadata URL**: [U.S. Bureau of Labor Statistics - Unemployment Rate](https://fred.stlouisfed.org/series/UNRATE#0)
-* **Data URL**: [Unemployment Rate Data](https://fred.stlouisfed.org/graph/fredgraph.csv?bgcolor=%23e1e9f0&chart_type=line&drp=0&fo=open%20sans&graph_bgcolor=%23ffffff&height=450&mode=fred&recession_bars=on&txtcolor=%23444444&ts=12&tts=12&width=1320&nt=0&thu=0&trc=0&show_legend=yes&show_axis_titles=yes&show_tooltip=yes&id=UNRATE&scale=left&cosd=1960-01-01&coed=2023-01-01&line_color=%234572a7&link_values=false&line_style=solid&mark_type=none&mw=3&lw=3&ost=-99999&oet=99999&mma=0&fml=a&fq=Annual&fam=avg&fgst=lin&fgsnd=2020-02-01&line_index=1&transformation=lin&vintage_date=2024-11-06&revision_date=2024-11-06&nd=1948-01-01)
-* **Data Type**: CSV
+### 1. **Unemployment Rate (U.S.)**
 
-This dataset shows the seasonally adjusted annual average U.S. unemployment rate from 1960 to 2023, making it easy to compare trends from year to year.
+- **Annual Data**:
+  - **Metadata URL**: [U.S. Bureau of Labor Statistics - Unemployment Rate](https://fred.stlouisfed.org/series/UNRATE#0)
+  - **Data URL**: [Annual Unemployment Rate Data](https://fred.stlouisfed.org/graph/fredgraph.csv?bgcolor=%23e1e9f0&chart_type=line&drp=0&fo=open%20sans&graph_bgcolor=%23ffffff&height=450&mode=fred&recession_bars=on&txtcolor=%23444444&ts=12&tts=12&width=1320&nt=0&thu=0&trc=0&show_legend=yes&show_axis_titles=yes&show_tooltip=yes&id=UNRATE&scale=left&cosd=1960-01-01&coed=2023-01-01&line_color=%234572a7&link_values=false&line_style=solid&mark_type=none&mw=3&lw=3&ost=-99999&oet=99999&mma=0&fml=a&fq=Annual&fam=avg&fgst=lin&fgsnd=2020-02-01&line_index=1&transformation=lin&vintage_date=2024-11-06&revision_date=2024-11-06&nd=1948-01-01)
+  - **Description**: Provides the seasonally adjusted annual average U.S. unemployment rate from 1960 to 2023, allowing for easy year-over-year comparisons.
 
-### Datasource2: Real Gross Domestic Product (Real GDP)
-* **Metadata URL**: [U.S. Bureau of Economic Analysis - Real GDP](https://fred.stlouisfed.org/series/GDPC1#0)
-* **Data URL**: [Real GDP Data](https://fred.stlouisfed.org/graph/fredgraph.csv?bgcolor=%23e1e9f0&chart_type=line&drp=0&fo=open%20sans&graph_bgcolor=%23ffffff&height=450&mode=fred&recession_bars=on&txtcolor=%23444444&ts=12&tts=12&width=1320&nt=0&thu=0&trc=0&show_legend=yes&show_axis_titles=yes&show_tooltip=yes&id=GDPC1&scale=left&cosd=1960-01-01&coed=2023-01-01&line_color=%234572a7&link_values=false&line_style=solid&mark_type=none&mw=3&lw=2&ost=-99999&oet=99999&mma=0&fml=a&fq=Annual&fam=sum&fgst=lin&fgsnd=2020-02-01&line_index=1&transformation=lin&vintage_date=2024-11-06&revision_date=2024-11-06&nd=1947-01-01)
-* **Data Type**: CSV
+- **Quarterly Data**:
+  - **Metadata URL**: [U.S. Bureau of Labor Statistics - Unemployment Rate](https://fred.stlouisfed.org/series/UNRATE#0)
+  - **Data URL**: [Quarterly Unemployment Rate Data](https://fred.stlouisfed.org/graph/fredgraph.csv?bgcolor=%23e1e9f0&chart_type=line&drp=0&fo=open%20sans&graph_bgcolor=%23ffffff&height=450&mode=fred&recession_bars=on&txtcolor=%23444444&ts=12&tts=12&width=1320&nt=0&thu=0&trc=0&show_legend=yes&show_axis_titles=yes&show_tooltip=yes&id=UNRATE&scale=left&cosd=2014-07-01&coed=2024-07-01&line_color=%234572a7&link_values=false&line_style=solid&mark_type=none&mw=3&lw=3&ost=-99999&oet=99999&mma=0&fml=a&fq=Quarterly&fam=avg&fgst=lin&fgsnd=2020-02-01&line_index=1&transformation=lin&vintage_date=2024-11-08&revision_date=2024-11-08&nd=1948-01-01)
+  - **Description**: Contains quarterly unemployment rates from 2014 to 2024, seasonally adjusted to support analysis of recent short-term trends.
 
-This dataset provides the total annual Real GDP for the U.S. from 1960 to 2023, adjusted for inflation. It gives a clear picture of the country’s economic output and will help track economic growth over time, while also looking at how it relates to unemployment trends.
+### 2. **Real Gross Domestic Product (Real GDP)**
+
+- **Annual Data**:
+  - **Metadata URL**: [U.S. Bureau of Economic Analysis - Real GDP](https://fred.stlouisfed.org/series/GDPC1#0)
+  - **Data URL**: [Annual Real GDP Data](https://fred.stlouisfed.org/graph/fredgraph.csv?bgcolor=%23e1e9f0&chart_type=line&drp=0&fo=open%20sans&graph_bgcolor=%23ffffff&height=450&mode=fred&recession_bars=on&txtcolor=%23444444&ts=12&tts=12&width=1320&nt=0&thu=0&trc=0&show_legend=yes&show_axis_titles=yes&show_tooltip=yes&id=GDPC1&scale=left&cosd=1960-01-01&coed=2023-01-01&line_color=%234572a7&link_values=false&line_style=solid&mark_type=none&mw=3&lw=2&ost=-99999&oet=99999&mma=0&fml=a&fq=Annual&fam=sum&fgst=lin&fgsnd=2020-02-01&line_index=1&transformation=lin&vintage_date=2024-11-06&revision_date=2024-11-06&nd=1947-01-01)
+  - **Description**: Provides the annual Real GDP of the U.S. (adjusted for inflation) from 1960 to 2023, reflecting overall economic growth and output levels.
+
+- **Quarterly Data**:
+  - **Metadata URL**: [U.S. Bureau of Economic Analysis - Real GDP](https://fred.stlouisfed.org/series/GDPC1#0)
+  - **Data URL**: [Quarterly Real GDP Data](https://fred.stlouisfed.org/graph/fredgraph.csv?bgcolor=%23e1e9f0&chart_type=line&drp=0&fo=open%20sans&graph_bgcolor=%23ffffff&height=450&mode=fred&recession_bars=on&txtcolor=%23444444&ts=12&tts=12&width=1320&nt=0&thu=0&trc=0&show_legend=yes&show_axis_titles=yes&show_tooltip=yes&id=GDPC1&scale=left&cosd=2014-07-01&coed=2024-07-01&line_color=%234572a7&link_values=false&line_style=solid&mark_type=none&mw=3&lw=2&ost=-99999&oet=99999&mma=0&fml=a&fq=Quarterly&fam=avg&fgst=lin&fgsnd=2020-02-01&line_index=1&transformation=lin&vintage_date=2024-11-08&revision_date=2024-11-08&nd=1947-01-01)
+  - **Description**: Contains quarterly Real GDP values for the U.S. from 2014 to 2024, adjusted for inflation. This data allows a more detailed look at economic growth and short-term variations.
+
 
 ## Work Packages
 
