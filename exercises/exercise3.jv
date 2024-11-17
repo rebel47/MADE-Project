@@ -87,7 +87,7 @@ pipeline GDPBondPipeline {
         header: true;
         columns: [
         "Country Code" oftype CountryCodeAlpha3,
-        "GDP per Capita" oftype GDPType,
+        "GDP per Capita" oftype decimal,
         ];
     }
 
@@ -95,7 +95,7 @@ pipeline GDPBondPipeline {
         header: true;
         columns: [
         "Country Code" oftype CountryCodeAlpha3,
-        "Bond Issuance Share" oftype BondType,
+        "Bond Issuance Share" oftype decimal,
         ];
     }
 
