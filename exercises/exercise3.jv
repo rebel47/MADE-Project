@@ -71,7 +71,7 @@ pipeline GDPBondPipeline {
         regex: /^\d+(\.\d+)?/;
     }
 
-    valuetype GDPType oftype decimal {
+    valuetype GDPType oftype integer {
         constraints: [ GDPRegex ];
     }
 
@@ -79,7 +79,7 @@ pipeline GDPBondPipeline {
         regex: /^0(\.\d+)?|1(\.0+)?$/;
     }
 
-    valuetype BondType oftype decimal {
+    valuetype BondType oftype integer {
         constraints: [ BondRegex ];
     }
 
