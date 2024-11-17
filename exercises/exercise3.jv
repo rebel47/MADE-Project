@@ -71,26 +71,22 @@ pipeline GDPBondPipeline {
         regex: /^\d+(\.\d+)?/;
     }
 
-    valuetype GDPType oftype text {
-        constraints: [
-            GDPRegex,
-        ];
+    valuetype GDPType oftype decimal {
+        constraints: [ GDPRegex ];
     }
 
     constraint BondRegex oftype RegexConstraint {
         regex: /^0(\.\d+)?|1(\.0+)?$/;
     }
 
-    valuetype BondType oftype text {
-        constraints: [
-            BondRegex,
-        ];
+    valuetype BondType oftype decimal {
+        constraints: [ BondRegex ];
     }
 
     block GDPTableInterpreter oftype TableInterpreter {
         header: true;
         columns: [
-        "Country Code" oftype text,
+        "Country Code" oftype CountryCodeAlpha3,
         "GDP per Capita" oftype GDPType,
         ];
     }
@@ -98,7 +94,7 @@ pipeline GDPBondPipeline {
     block BondTableInterpreter oftype TableInterpreter {
         header: true;
         columns: [
-        "Country Code" oftype text,
+        "Country Code" oftype CountryCodeAlpha3,
         "Bond Issuance Share" oftype BondType,
         ];
     }
