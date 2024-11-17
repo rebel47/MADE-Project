@@ -1,0 +1,116 @@
+pipeline GDPBondPipeline {
+
+    GDPHttpExtractor
+        ->GDPXLSXInterpreter
+        ->GDPSheetPicker
+        ->GDPRangeSelector
+        ->GDPHeaderWriter
+        ->GDPTableInterpreter
+        ->GDPLoader
+    ;
+
+    BondHttpExtractor
+        ->BondXLSXInterpreter
+        ->BondSheetPicker
+        ->BondRangeSelector
+        ->BondHeaderWriter
+        ->BondTableInterpreter
+        ->BondLoader
+    ;
+
+
+    block GDPHttpExtractor oftype HttpExtractor {
+        url: "https://thedocs.worldbank.org/en/doc/7d852628d96b9411d43e5d36d5dff941-0050062022/original/Graphs-Chapter-5-02082022.xlsx";
+    }
+    
+    block BondHttpExtractor oftype HttpExtractor {
+        url: "https://thedocs.worldbank.org/en/doc/7d852628d96b9411d43e5d36d5dff941-0050062022/original/Graphs-Chapter-5-02082022.xlsx";
+    }
+
+    block GDPXLSXInterpreter oftype XLSXInterpreter { }
+
+    block BondXLSXInterpreter oftype XLSXInterpreter { }
+
+    block GDPSheetPicker oftype SheetPicker {
+       sheetName: "Figure S5.1.2";
+    }
+    
+    block BondSheetPicker oftype SheetPicker {
+       sheetName: "Figure S5.1.2";
+    }
+
+    block GDPRangeSelector oftype CellRangeSelector {
+        select: range P2:S45;
+    }
+
+    block BondRangeSelector oftype CellRangeSelector {
+        select: range P2:S45;
+    }
+
+    block GDPHeaderWriter oftype CellWriter {
+        at: range A1:D1;
+        write: [
+        "Country Code",
+        "Economy",
+        "GDP per Capita",
+        "Bond Issuance Share"
+        ];
+    }
+
+    block BondHeaderWriter oftype CellWriter {
+        at: range A1:D1;
+        write: [
+        "Country Code",
+        "Economy",
+        "GDP per Capita",
+        "Bond Issuance Share"
+        ];
+    }
+
+    constraint GDPRegex oftype RegexConstraint {
+        regex: /^\d+(\.\d+)?/;
+    }
+
+    valuetype GDPType oftype text {
+        constraints: [
+            GDPRegex,
+        ];
+    }
+
+    constraint BondRegex oftype RegexConstraint {
+        regex: /^0(\.\d+)?|1(\.0+)?$/;
+    }
+
+    valuetype BondType oftype text {
+        constraints: [
+            BondRegex,
+        ];
+    }
+
+    block GDPTableInterpreter oftype TableInterpreter {
+        header: true;
+        columns: [
+        "Country Code" oftype CountryCodeAlpha3,
+        "GDP per Capita" oftype GDPType,
+        ];
+    }
+
+    block BondTableInterpreter oftype TableInterpreter {
+        header: true;
+        columns: [
+        "Country Code" oftype CountryCodeAlpha3,
+        "Bond Issuance Share" oftype BondType,
+        ];
+    }
+
+    block GDPLoader oftype SQLiteLoader {
+        table: "gdpPerCapita";
+        file: "./country-stats.sqlite";
+    }
+
+    block BondLoader oftype SQLiteLoader {
+        table: "bondIssuance";
+        file: "./country-stats.sqlite";
+    }
+
+}
