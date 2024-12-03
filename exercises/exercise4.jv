@@ -7,6 +7,7 @@ pipeline temperaturePipeline {
         ->temperatureCSVInterpreter
         ->temperatureFirstFiveRename
         ->temperatureLastRename
+        ->temperaturecolumnDeleter
         ->temperatureTableInterpreter
         ->TemperatureCtoF
         ->batteryTemperatureCtoF
@@ -44,13 +45,17 @@ pipeline temperaturePipeline {
         write: ["battery_temperature"];
     }
 
+    block temperaturecolumnDeleter oftype ColumnDeleter {
+        delete : [column F, column G, column H, column I];
+    }
+
     block temperatureTableInterpreter oftype TableInterpreter{
         header: false;
         columns: [
-            "id" oftype integer,
+            "id" oftype IDdType,
             "producer" oftype text,
             "model" oftype text,
-            "month" oftype integer,
+            "month" oftype monthdType,
             "temperature" oftype decimal,
             "battery_temperature" oftype decimal,
         ];
@@ -60,7 +65,6 @@ pipeline temperaturePipeline {
     transform CelsiusToFahrenheit {
         from Celsius oftype decimal;
         to Fahrenheit oftype decimal;
-
         Fahrenheit: (Celsius * 9/5) + 32;
     }
     block TemperatureCtoF oftype TableTransformer {
@@ -73,11 +77,24 @@ pipeline temperaturePipeline {
         outputColumn: 'battery_temperature';
         uses: CelsiusToFahrenheit;
     }
-
-
+    
     block temperatureLoader oftype SQLiteLoader {
         table: "temperatures";
         file: "./temperatures.sqlite";
+    }
+    constraint positiveIDConstraint on integer :
+        value >= 0;
+    valuetype IDdType oftype integer {
+        constraints : [ positiveIDConstraint ];
+    }
+    constraint monthRangeConstraint oftype RangeConstraint {
+        lowerBound: 1;
+        lowerBoundInclusive: true;
+        upperBound: 12;
+        upperBoundInclusive: true;
+    }
+    valuetype monthdType oftype integer {
+        constraints: [monthRangeConstraint];
     }
 
 }
