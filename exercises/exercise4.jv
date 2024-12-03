@@ -13,7 +13,6 @@ pipeline temperaturePipeline {
         ->batteryTemperatureCtoF
         ->temperatureLoader;
 
-    
 
     block temperatureExtractor oftype HttpExtractor {
         url: "https://www.mowesta.com/data/measure/mowesta-dataset-20221107.zip";
