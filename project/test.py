@@ -3,8 +3,11 @@ import pytest
 import subprocess
 
 # Directory path
-data = '../data'
+project = os.path.dirname(os.path.abspath(__file__))
+data = os.path.abspath(os.path.join(project, "..", "data"))
+pipeline = os.path.join(project, "pipeline.py")
 sqlite_file = os.path.join(data, "data.sqlite")
+
 
 # Test setup to check file existence, handle accordingly, and run pipeline
 @pytest.fixture(scope="module")
@@ -18,7 +21,7 @@ def setup_and_run_pipeline():
 
     # Run the pipeline
     print("Running pipeline.py...")
-    result = subprocess.run(["python", "pipeline.py"], capture_output=True, text=True)
+    result = subprocess.run(["python", pipeline], capture_output=True, text=True)
 
     # Check for errors in pipeline execution
     if result.returncode != 0:
