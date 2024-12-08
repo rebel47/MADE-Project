@@ -25,5 +25,7 @@ jobs:
           pip install pytest
 
       - name: Run Tests
-        run: ./test.sh 
+        run: |
+          chmod +x project/test.sh
+          project/test.sh
 
