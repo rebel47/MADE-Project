@@ -23,7 +23,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install pandas
           pip install pytest
-          pip install sqlite3
 
       - name: Run Tests
         run: ./test.sh 
