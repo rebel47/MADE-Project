@@ -1,3 +1,3 @@
 #!/bin/bash
 echo "Running automated tests using pytest..."
-pytest -s test.py
+pytest -s ./project/test.py
