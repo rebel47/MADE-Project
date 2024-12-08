@@ -7,11 +7,11 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest 
+    runs-on: windows-latest 
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -28,5 +28,5 @@ jobs:
       - name: Run Tests
         run: |
           chmod +x project/test.sh
-          project/test.sh
+          ./project/tests.bat
 
