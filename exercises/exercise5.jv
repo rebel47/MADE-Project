@@ -1,0 +1,72 @@
+pipeline GTFSStopsPipeline {
+
+    GTFSExtractor
+        -> GTFSArchiveInterpreter
+        -> StopsFilePicker
+        -> StopsTextFileInterpreter
+        -> StopsCSVInterpreter
+        -> StopsTableInterpreter
+        -> StopsLoader;
+
+    block GTFSExtractor oftype HttpExtractor {
+        url: "https://gtfs.rhoenenergie-bus.de/GTFS.zip";
+    }
+
+    block GTFSArchiveInterpreter oftype ArchiveInterpreter {
+        archiveType: "zip";
+    }
+
+    block StopsFilePicker oftype FilePicker {
+        path: "./stops.txt";
+    }
+
+    block StopsTextFileInterpreter oftype TextFileInterpreter { }
+
+    block StopsCSVInterpreter oftype CSVInterpreter {
+        enclosing:'"';
+        delimiter: ",";
+    }
+
+    valuetype ZoneId1925 oftype text {
+        constraints: [ZoneIdConstraint];
+    }
+
+    constraint ZoneIdConstraint oftype RegexConstraint {
+        regex: /^1925$/;
+    }
+
+    valuetype GeoCoordinate oftype decimal {
+        constraints: [GeoCoordinateRangeConstraint];
+    }
+
+    constraint GeoCoordinateRangeConstraint oftype RangeConstraint {
+        lowerBound: -90.0;
+        lowerBoundInclusive: true;
+        upperBound: 90.0;
+        upperBoundInclusive: true;
+    }
+
+    valuetype StopName oftype text {
+        constraints: [StopNameTextConstraint];
+    }
+
+    constraint StopNameTextConstraint oftype RegexConstraint {
+        regex: /^[a-zA-ZäöüÄÖÜß\s'-]+$/;
+    }
+
+    block StopsTableInterpreter oftype TableInterpreter {
+        header: true;
+        columns: [
+            "stop_id" oftype text,
+            "stop_name" oftype StopName,
+            "stop_lat" oftype GeoCoordinate,
+            "stop_lon" oftype GeoCoordinate,
+            "zone_id" oftype ZoneId1925
+        ];
+    }
+
+    block StopsLoader oftype SQLiteLoader {
+        table: "stops";
+        file: "./gtfs.sqlite";
+    }
+}
