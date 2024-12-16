@@ -31,8 +31,8 @@ for name, url in datasets.items():
         dataframe[name] = df
 
 #Merging the Quarterly and Annual Data together using the DATE column
-quarterly_merged = pd.merge(dataframe["quarterly_unemployment"],dataframe["quarterly_gdp"],on="DATE", how="inner")
-annual_merged = pd.merge(dataframe["annual_unemployment"],dataframe["annual_gdp"],on="DATE",how="inner")   
+quarterly_merged = pd.merge(dataframe["quarterly_unemployment"],dataframe["quarterly_gdp"],on="observation_date", how="inner")
+annual_merged = pd.merge(dataframe["annual_unemployment"],dataframe["annual_gdp"],on="observation_date",how="inner")   
 print('Data Merged Successfully')
 #Coverting to SQLite   
 sqlite_path = os.path.join(data,"data.sqlite")
