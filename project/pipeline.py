@@ -27,12 +27,14 @@ for name, url in datasets.items():
             df.rename(columns={"UNRATE": "UnemploymentRate"}, inplace=True)
         if "GDPC1" in df.columns:
             df.rename(columns={"GDPC1": "GDPRate"}, inplace=True)
+        if "observation_date" in df.columns:
+            df.rename(columns={"observation_date": "date"}, inplace=True)
             
         dataframe[name] = df
 
 #Merging the Quarterly and Annual Data together using the DATE column
-quarterly_merged = pd.merge(dataframe["quarterly_unemployment"],dataframe["quarterly_gdp"],on="observation_date", how="inner")
-annual_merged = pd.merge(dataframe["annual_unemployment"],dataframe["annual_gdp"],on="observation_date",how="inner")   
+quarterly_merged = pd.merge(dataframe["quarterly_unemployment"],dataframe["quarterly_gdp"],on="date", how="inner")
+annual_merged = pd.merge(dataframe["annual_unemployment"],dataframe["annual_gdp"],on="date",how="inner")   
 print('Data Merged Successfully')
 #Coverting to SQLite   
 sqlite_path = os.path.join(data,"data.sqlite")
