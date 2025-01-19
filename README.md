@@ -22,10 +22,6 @@ Understanding the link between unemployment rate and economic growth which can r
 [i5]: https://github.com/rebel47/MADE-Project/issues/5
 [i6]: https://github.com/rebel47/MADE-Project/issues/6
 
-# Exercise Badges
-
-![](https://byob.yarr.is/rebel47/MADE-Project/score_ex1) ![](https://byob.yarr.is/rebel47/MADE-Project/score_ex2) ![](https://byob.yarr.is/rebel47/MADE-Project/score_ex3) ![](https://byob.yarr.is/rebel47/MADE-Project/score_ex4) ![](https://byob.yarr.is/rebel47/MADE-Project/score_ex5)
-
 # Methods of Advanced Data Engineering Template Project
 
 This template project provides some structure for your open data project in the MADE module at FAU.
